@@ -8,11 +8,26 @@ body {
     background-color: wheat;
     height: 100vh;
     position: relative;
+    background-image: url("../img/background.jpg");
+    background-size: cover;
 }
 
 #player {
-    background-color: pink;
+    background-color: transparent;
     position: absolute;
-    border: purple 2px solid;
+    border: purple 2px ;
+    background-image: url("../img/Iconarchive-Cute-Cat.png");
+    background-size: cover;
+}
+
+.obstacle {
+    /* background-color: orange; */
+    position: absolute;
+    /* border-radius: 30px; */
+    /* border: red 2px dotted; */
+    background-image: url("../img/rocket.png");
+    background-size: cover;
+    
+
 }
 
