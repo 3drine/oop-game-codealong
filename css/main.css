@@ -1,3 +1,18 @@
 body {
     background-color: pink;
+    margin: 0;
+    padding: 0;
 }
+
+#board {
+    background-color: wheat;
+    height: 100vh;
+    position: relative;
+}
+
+#player {
+    background-color: pink;
+    position: absolute;
+    border: purple 2px solid;
+}
+
