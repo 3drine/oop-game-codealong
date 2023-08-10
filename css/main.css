@@ -7,6 +7,7 @@ body {
 #board {
     background-color: wheat;
     height: 100vh;
+    max-height: 100vh;
     position: relative;
     background-image: url("../img/background.jpg");
     background-size: cover;

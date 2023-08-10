@@ -55,9 +55,9 @@ document.addEventListener('keydown', (event)=> {
 
 class Obstacle {
     constructor(){
-        this.positionX = Math.random() * (80 - 0) + 0;
-        this.positionY = 100;
         this.width = 5; 
+        this.positionX = Math.random() * ((100-this.width) - 0) + 0;
+        this.positionY = 100;
         this.height = 15;
         this.domElement = null;
 
@@ -91,13 +91,30 @@ const obstaclesArr = [];
 setInterval(() => {
     let newObstacle = new Obstacle;
     //newObstacle.moveDown();
-    obstaclesArr.push(newObstacle)
-}, 10000)
+    obstaclesArr.push(newObstacle);
+    if(obstaclesArr.length>3) {
+        document.getElementById("board").removeChild(document.getElementById("board").childNodes[1])
+    }
+    
+}, 2000)
 
 // move all obstacles 
 setInterval(() => {
-    obstaclesArr.forEach((element) => {
-        element.moveDown();
+    obstaclesArr.forEach((obstacleInstance) => {
+        //moves
+        obstacleInstance.moveDown();
+
+        //checks for collision
+        if (
+            player.positionX < obstacleInstance.positionX + obstacleInstance.width &&
+            player.positionX + player.width > obstacleInstance.positionX &&
+            player.positionY < obstacleInstance.positionY + obstacleInstance.height &&
+            player.positionY + player.height > obstacleInstance.positionY
+        ) {
+            // Collision detected!
+            console.log("game over my fren! ");
+            location.href="./gameover.html"
+        }
     })
 }, 20);
 
