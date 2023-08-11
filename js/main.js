@@ -1,8 +1,8 @@
 class Player { 
     constructor(){
-        this.positionX = 50;
+        this.width = 10;
+        this.positionX = 50-this.width/2;
         this.positionY = 0;
-        this.width = 10; 
         this.height = 20;
         this.domElement = null;
         this.createDomElement();
@@ -90,19 +90,25 @@ const obstaclesArr = [];
 
 setInterval(() => {
     let newObstacle = new Obstacle;
-    //newObstacle.moveDown();
     obstaclesArr.push(newObstacle);
-    if(obstaclesArr.length>3) {
-        document.getElementById("board").removeChild(document.getElementById("board").childNodes[1])
-    }
     
-}, 2000)
+}, 1000)
 
 // move all obstacles 
 setInterval(() => {
     obstaclesArr.forEach((obstacleInstance) => {
         //moves
         obstacleInstance.moveDown();
+
+        //remove if outside
+        if(obstacleInstance.positionY < 0 - obstacleInstance.height){
+            obstacleInstance.domElement.remove();
+            obstaclesArr.shift();
+
+        }
+
+
+
 
         //checks for collision
         if (
@@ -113,7 +119,7 @@ setInterval(() => {
         ) {
             // Collision detected!
             console.log("game over my fren! ");
-            location.href="./gameover.html"
+            //location.href="./gameover.html"
         }
     })
 }, 20);
